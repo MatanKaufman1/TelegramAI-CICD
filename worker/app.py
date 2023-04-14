@@ -1,11 +1,10 @@
-import json
 import time
+import json
 import os
 import boto3
 from botocore.exceptions import ClientError
 from loguru import logger
 from utils import search_download_youtube_video
-
 
 env = os.environ['ENV']
 with open(f'config-{env}.json') as f:
