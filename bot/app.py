@@ -1,9 +1,10 @@
 import os
+import json
 import telebot
 from botocore.exceptions import ClientError
 from loguru import logger
 import boto3
-import json
+
 
 
 class Bot:
@@ -77,7 +78,7 @@ class YoutubeBot(Bot):
                     }
                 )
                 logger.info(f'msg {response.get("MessageId")} has been sent to queue')
-                self.send_text('hey, Your message is being processed...')
+                self.send_text('Hey, Your message is being processed...')
             except ClientError as error:
                 logger.error(error)
                 self.send_text('Something went wrong, please try again....')
