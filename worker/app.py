@@ -49,7 +49,7 @@ def main():
                     logger.info(f'msg {msg} has been handled successfully')
 
         except ClientError as err:
-            logger.exception(f"Couldn't receive messages {err}")
+            logger.exception(f"Hey, we Couldn't receive messages {err}")
             time.sleep(10)
 
 
