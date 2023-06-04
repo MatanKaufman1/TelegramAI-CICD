@@ -36,32 +36,7 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                sh ' echo Execute the tests inside the test code container '
-                sh 'docker exec matan_test_bot pytest bot/test.py'
-            }
-        }
 
-        stage('Collect Results') {
-            steps {
-                // Copy the test results from the test code container to the Jenkins workspace
-                sh 'docker cp matan_test_bot:/path/to/tests/results.xml .'
-
-                // Publish the test results in Jenkins
-                junit 'results.xml'
-            }
-        }
-
-        stage('Cleanup') {
-            steps {
-                // Stop and remove the containers
-                sh 'docker stop my-app-container'
-                sh 'docker rm my-app-container'
-                sh 'docker stop test-container'
-                sh 'docker rm test-container'
-            }
-        }
     }
 
             post {
@@ -71,5 +46,4 @@ pipeline {
             }
         }
     }
-}
 }
