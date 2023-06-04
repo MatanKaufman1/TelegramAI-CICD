@@ -11,9 +11,7 @@ pipeline {
         IMAGE_TAG = '${BUILD_NUMBER}'
     }
 
-    parameters {
-        string(name: 'BOT_IMAGE_NAME')
-    }
+
 
 
 
