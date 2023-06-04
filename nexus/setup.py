@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
-loguru_setup_args = dict(
-    name='loguru',
-    version='0.7.0',
-    description='loguru',
-    license='MIT',
+pyTelegramBotAPI_setup_args = dict(
+    name='pyTelegramBotAPI',
+    version='4.12.0',
+    description='pyTelegramBotAPI',
+    license='GPL2',
     install_requires=[
         'yt-dlp>=2023.2.17',
         'pyTelegramBotAPI',
@@ -17,6 +17,6 @@ loguru_setup_args = dict(
 )
 
 if __name__ == '__main__':
-    setup(**loguru_setup_args)
+    setup(**pyTelegramBotAPI_setup_args)
 
 
