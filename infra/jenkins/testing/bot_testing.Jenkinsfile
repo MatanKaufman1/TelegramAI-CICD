@@ -33,14 +33,14 @@ pipeline {
 
 
                 // Start the test code container and link it to the application container
-                sh "docker run -d --name matan_test --link bot-app-container $IMAGE_NAME:$BUILD_NUMBER"
+                sh "docker run -d --name matan_test_bot --link bot-app-container $IMAGE_NAME:$BUILD_NUMBER"
             }
         }
 
         stage('Run Tests') {
             steps {
                 sh 'echo Execute the tests inside the test code container'
-                sh "docker exec matan_test_bot pytest 700935310038.dkr.ecr.us-west-2.amazonaws.com/matan-dev-bot:104"
+                sh "docker exec $IMAGE_NAME pytest 700935310038.dkr.ecr.us-west-2.amazonaws.com/matan-dev-bot:104"
             }
         }
 
@@ -64,8 +64,8 @@ pipeline {
             sh 'docker rm bot-app-container'
             sh 'docker stop matan_test_bot'
             sh 'docker rm matan_test_bot'
-            sh 'docker stop matan-test'
-            sh 'docker rm matan-test'
+            sh 'docker stop matan_test'
+            sh 'docker rm matan_test'
 
         }
     }
