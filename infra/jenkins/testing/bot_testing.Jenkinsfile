@@ -11,6 +11,8 @@ pipeline {
         IMAGE_TAG = '${BUILD_NUMBER}'
     }
 
+
+
     stages {
         stage('Build') {
             steps {
@@ -26,7 +28,7 @@ pipeline {
         stage('Run Containers') {
             steps {
                 sh 'echo Start the application container'
-                sh 'docker run -d --name bot-app-container matan-dev-bot'
+                sh "docker run -d --name bot-app-container $BOT_IMAGE_NAME"
 
                 // Start the test code container and link it to the application container
                 sh "docker run -d --name matan_test_bot --link bot-app-container $IMAGE_NAME:$BUILD_NUMBER"
