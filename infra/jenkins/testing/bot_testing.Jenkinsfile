@@ -33,7 +33,7 @@ pipeline {
 
 
                 // Start the test code container and link it to the application container
-                sh "docker run -d --name matan-test --link bot-app-container $IMAGE_NAME:$BUILD_NUMBER"
+                sh "docker run -d --name matan_test --link bot-app-container $IMAGE_NAME:$BUILD_NUMBER"
             }
         }
 
@@ -64,6 +64,8 @@ pipeline {
             sh 'docker rm bot-app-container'
             sh 'docker stop matan_test_bot'
             sh 'docker rm matan_test_bot'
+            sh 'docker stop matan-test'
+            sh 'docker rm matan-test'
 
         }
     }
