@@ -54,15 +54,7 @@ pipeline {
             }
         }
 
-        stage('Cleanup') {
-            steps {
-                // Stop and remove the containers
-                sh 'docker stop bot-app-container'
-                sh 'docker rm bot-app-container'
-                sh 'docker stop matan_test_bot'
-                sh 'docker rm matan_test_bot'
-            }
-        }
+
     }
 
     post {
@@ -72,8 +64,7 @@ pipeline {
             sh 'docker rm bot-app-container'
             sh 'docker stop matan_test_bot'
             sh 'docker rm matan_test_bot'
-            sh 'docker images'
-            sh' docker ps -a
+
         }
     }
 }
