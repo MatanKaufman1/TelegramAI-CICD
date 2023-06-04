@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
-boto3_setup_args = dict(
-    name='boto3',
+pyTelegramBotAPI_setup_args = dict(
+    name='pyTelegramBotAPI',
     version='1.0.0',
-    description='boto3',
+    description='pyTelegramBotAPI',
     license='MIT',
     install_requires=[
         'yt-dlp>=2023.2.17',
@@ -16,6 +16,6 @@ boto3_setup_args = dict(
 )
 
 if __name__ == '__main__':
-    setup(**boto3_setup_args)
+    setup(**pyTelegramBotAPI_setup_args)
 
 
