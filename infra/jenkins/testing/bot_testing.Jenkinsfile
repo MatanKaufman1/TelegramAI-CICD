@@ -28,10 +28,10 @@ pipeline {
         stage('Run Containers') {
             steps {
                 sh 'echo Start the application container'
-                sh "docker run -d --name bot_pp 700935310038.dkr.ecr.us-west-2.amazonaws.com/matan-dev-bot:104 "
+                sh "docker run -d --name bot-app-container 700935310038.dkr.ecr.us-west-2.amazonaws.com/matan-dev-bot:104 "
 
                 // Start the test code container and link it to the application container
-                sh "docker run -d --name matan-test-bot --link bot_pp $IMAGE_NAME:$BUILD_NUMBER"
+                sh "docker run -d --name matan_test_bot --link bot-app-container $IMAGE_NAME:$BUILD_NUMBER"
             }
         }
 
@@ -66,6 +66,10 @@ pipeline {
     post {
         always {
             sh 'docker image prune -a --filter "until=64" --force'
+            sh 'docker stop bot-app-container'
+            sh 'docker rm bot-app-container'
+            sh 'docker stop matan_test_bot'
+            sh 'docker rm matan_test_bot'
         }
     }
 }
