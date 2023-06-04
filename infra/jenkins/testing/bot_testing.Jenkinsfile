@@ -8,7 +8,7 @@ pipeline {
     }
     environment {
     REGISTRY_URL = '700935310038.dkr.ecr.us-west-2.amazonaws.com'
-    IMAGE_NAME = 'matan-test-bot'
+    IMAGE_NAME = 'matan_test_bot'
     IMAGE_TAG = '${BUILD_NUMBER}'
 
     }
