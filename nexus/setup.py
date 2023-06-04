@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
-yt_dlp_package_setup_args = dict(
-    name='yt_dlp_package',
+boto3_setup_args = dict(
+    name='boto3',
     version='1.0.0',
-    description='yt-dlp Package',
+    description='boto3',
     license='MIT',
     install_requires=[
         'yt-dlp>=2023.2.17',
@@ -16,6 +16,6 @@ yt_dlp_package_setup_args = dict(
 )
 
 if __name__ == '__main__':
-    setup(**yt_dlp_package_setup_args)
+    setup(**boto3_setup_args)
 
 
