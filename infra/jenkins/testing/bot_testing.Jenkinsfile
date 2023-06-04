@@ -72,6 +72,8 @@ pipeline {
             sh 'docker rm bot-app-container'
             sh 'docker stop matan_test_bot'
             sh 'docker rm matan_test_bot'
+            sh 'docker images'
+            sh' docker ps -a
         }
     }
 }
