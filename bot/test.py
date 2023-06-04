@@ -8,7 +8,7 @@ class TestBot(unittest.TestCase):
         self.bot = Bot('test_token')
 
     def test_send_text(self):
-        # Mock the bot.send_message method and assert that it is called correctly
+        ## Mock the bot.send_message method and assert that it is called correctly
         self.bot.bot.send_message = MagicMock()
         self.bot.current_msg = MagicMock(chat=MagicMock(id=123))
         self.bot.send_text('Test message')
