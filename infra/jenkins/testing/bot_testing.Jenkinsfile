@@ -29,7 +29,7 @@ pipeline {
             stage('Run Containers') {
                 steps {
                     sh ' echo Start the application container '
-                    sh 'docker run -d --name bot-app-container $BOT_IMAGE_NAME'
+                    sh 'docker run -d --name bot-app-container matan-dev-bot'
 
                     // Start the test code container and link it to the application container
                     sh 'docker run -d --name matan_test_bot --link $BOT_IMAGE_NAME matan_test_bot'
@@ -72,3 +72,4 @@ pipeline {
             }
         }
     }
+}
