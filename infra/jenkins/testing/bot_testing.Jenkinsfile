@@ -32,7 +32,7 @@ pipeline {
         stage('Run Containers') {
             steps {
                 sh 'echo Start the application container'
-                sh "docker run -d --name bot-app-container $BOT_IMAGE_NAME"
+                sh "docker run -d --name bot-app-container $BOT_IMAGE_NAME:$BUILD_NUMBER"
 
                 // Start the test code container and link it to the application container
                 sh "docker run -d --name matan_test_bot --link bot-app-container $IMAGE_NAME:$BUILD_NUMBER"
