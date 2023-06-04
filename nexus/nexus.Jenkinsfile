@@ -11,8 +11,8 @@ pipeline {
 
                     withCredentials([usernamePassword(credentialsId: nexusCredentialsId, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh ''' cd nexus '''
-                        sh "pip3 install --index-url=${nexusUrl} --trusted-host http://54.245.51.148 --user --upgrade pip"
-                        sh "pip3 install --index-url=${nexusUrl} --trusted-host http://54.245.51.148 --user -r requirements.txt"
+                        sh "pip install --index-url=${nexusUrl} --trusted-host http://54.245.51.148 --user --upgrade pip"
+                        sh "pip install --index-url=${nexusUrl} --trusted-host http://54.245.51.148 --user -r requirements.txt"
                     }
                 }
             }
