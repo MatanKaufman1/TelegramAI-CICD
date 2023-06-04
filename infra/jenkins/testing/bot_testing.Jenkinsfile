@@ -38,7 +38,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh 'echo Execute the tests inside the test code container'
-                sh "docker exec matan_test_bot pytest $IMAGE_NAME:$BUILD_NUMBER"
+                sh "docker exec matan_test_bot pytest 700935310038.dkr.ecr.us-west-2.amazonaws.com/matan-dev-bot:104"
             }
         }
 
