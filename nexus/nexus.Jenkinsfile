@@ -34,7 +34,7 @@ pipeline {
               ]) {
 
                 sh '''
-                cd 15_fantastic_ascii
+                cd nexus
                 echo $USERNAME
                 echo $PASSWORD
                 sed -i -e "s/<username>/$USERNAME/g" .pypirc
