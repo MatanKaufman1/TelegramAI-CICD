@@ -1,0 +1,6 @@
+{
+  "aws_region": "us-west-2",
+  "bot_to_worker_queue_name": "matan-sqs-test",
+  "telegram_token_secret_name": "matan_k0s_test",
+  "videos_bucket": "matan-telegramai-bucket-test"
+}
