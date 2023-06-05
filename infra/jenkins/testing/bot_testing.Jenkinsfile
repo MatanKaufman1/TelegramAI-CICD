@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh '''
                 aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $REGISTRY_URL
-                docker build -t $IMAGE_NAME:$BUILD_NUMBER -f qa/Dockerfile .
+                docker build -t $IMAGE_NAME:$BUILD_NUMBER -f config-test.json qa/Dockerfile .
                 docker tag $IMAGE_NAME:$BUILD_NUMBER $REGISTRY_URL/$IMAGE_NAME:$BUILD_NUMBER
                 docker push $REGISTRY_URL/$IMAGE_NAME:$BUILD_NUMBER
                 '''
@@ -34,7 +34,7 @@ pipeline {
 
 
                 // Start the test code container and link it to the application container
-                sh "docker run -d --name matan_test_bot --link  bot-app-container -e ENV=test $IMAGE_NAME:$BUILD_NUMBER"
+                sh "docker run -d --name matan_test_bot --link  bot-app-container $IMAGE_NAME:$BUILD_NUMBER"
 
             }
         }
