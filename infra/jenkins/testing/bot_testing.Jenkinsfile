@@ -42,7 +42,7 @@ pipeline {
             steps {
                 sh 'echo Execute the tests inside the test code container'
                 sh ' docker ps -a'
-                sh "docker exec matan_test_bot pytest 700935310038.dkr.ecr.us-west-2.amazonaws.com/matan-dev-bot:104"
+                sh "docker exec matan_test_bot pytest -e ENV=dev 700935310038.dkr.ecr.us-west-2.amazonaws.com/matan-dev-bot:104"
             }
         }
 
