@@ -4,4 +4,4 @@ WORKDIR /app
 COPY . .
 RUN pip install -r qa/requirements.txt
 
-CMD ["python3", "-m", "bot.test"]
+CMD ["python3", "-m", "bot.test", "bot.app"]
