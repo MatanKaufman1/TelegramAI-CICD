@@ -29,12 +29,10 @@ pipeline {
             steps {
                 sh 'echo Start the application container'
                 sh "docker run -d --name bot-app-container -e ENV=dev 700935310038.dkr.ecr.us-west-2.amazonaws.com/matan-dev-bot:104 "
+                sh 'docker run -d --name matan_test_bot'
+                sh " --link bot-app-container  $IMAGE_NAME:$BUILD_NUMBER"
 
 
-
-
-                // Start the test code container and link it to the application container
-                sh "docker run -d --name matan_test_bot --link  bot-app-container -e ENV=dev $IMAGE_NAME:$BUILD_NUMBER"
 
             }
         }
