@@ -34,7 +34,7 @@ pipeline {
 
 
                 // Start the test code container and link it to the application container
-                sh "docker run -d --name matan_test_bot --link -e ENV=test bot-app-container $IMAGE_NAME:$BUILD_NUMBER"
+                sh "docker run -d --name matan_test_bot --link  bot-app-container -e ENV=test $IMAGE_NAME:$BUILD_NUMBER"
 
             }
         }
