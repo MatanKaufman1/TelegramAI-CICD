@@ -28,7 +28,7 @@ pipeline {
         stage('Run Containers') {
             steps {
                 sh 'echo Start the application container'
-                sh "docker run -d --name bot-app-container -e ENV=test 700935310038.dkr.ecr.us-west-2.amazonaws.com/matan-dev-bot:104 "
+                sh "docker run -d --name bot-app-container -e ENV=dev 700935310038.dkr.ecr.us-west-2.amazonaws.com/matan-dev-bot:104 "
 
 
 
