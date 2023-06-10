@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import MagicMock, patch
 from bot.app import Bot, QuoteBot, YoutubeBot, get_telegram_token_secret
 
+
 class TestBot(unittest.TestCase):
 
     def setUp(self):
