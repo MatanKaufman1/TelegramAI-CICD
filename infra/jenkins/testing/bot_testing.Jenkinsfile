@@ -25,13 +25,6 @@ pipeline {
                 docker build -t $APP_IMAGE_NAME:$APP_IMAGE_TAG -f qa_bot/Dockerfile .
                 docker tag $APP_IMAGE_NAME:$BUILD_NUMBER $APP_REGISTRY_URL/$APP_IMAGE_NAME:$BUILD_NUMBER
                 docker push $APP_REGISTRY_URL/$APP_IMAGE_NAME:$BUILD_NUMBER
-                '''
-            }
-        }
-
-         stage('Build test ') {
-            steps {
-                sh '''
                 aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $TEST_REGISTRY_URL
                 docker build -t $ TEST_IMAGE_NAME:$BUILD_NUMBER -f qa/bot/Dockerfile .
                 docker tag $TEST_IMAGE_NAME:$BUILD_NUMBER $TEST_REGISTRY_URL/$TEST_IMAGE_NAME:$BUILD_NUMBER
@@ -39,6 +32,8 @@ pipeline {
                 '''
             }
         }
+
+
 
         stage('Run Containers') {
             steps {
