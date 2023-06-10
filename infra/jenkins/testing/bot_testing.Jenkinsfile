@@ -41,16 +41,16 @@ pipeline {
         stage('Run Containers') {
             steps {
                 sh 'echo Start the application container'
-                sh "docker run -d --name bot-app-container -e ENV=dev ${APP_REGISTRY_URL}/${APP_IMAGE_NAME}:${APP_IMAGE_TAG}"
+                sh "docker run -d --name bot-app-container -e ENV=test ${APP_REGISTRY_URL}/${APP_IMAGE_NAME}:${APP_IMAGE_TAG}"
 
-                sh "docker run -d --name matan_test_bot --link bot-app-container ${TEST_REGISTRY_URL}/${TEST_IMAGE_NAME}:${APP_IMAGE_TAG}"
+                sh "docker run -d --name matan_test_bot --link matan_test_bot_app ${TEST_REGISTRY_URL}/${TEST_IMAGE_NAME}:${APP_IMAGE_TAG}"
             }
         }
 
         stage('Run Tests') {
             steps {
                 sh 'echo Execute the tests inside the test code container'
-                sh 'docker ps -a'
+                sh 'docker ps '
                 sh "docker exec matan_test_bot pytest ${APP_REGISTRY_URL}/${APP_IMAGE_NAME}:${APP_IMAGE_TAG}"
             }
         }
