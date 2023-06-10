@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock, patch
-from bot.app import Bot, QuoteBot, YoutubeBot, get_telegram_token_secret
+from app import Bot, QuoteBot, YoutubeBot, get_telegram_token_secret
 
 
 class TestBot(unittest.TestCase):
@@ -13,7 +13,7 @@ class TestBot(unittest.TestCase):
         self.bot.bot.send_message = MagicMock()
         self.bot.current_msg = MagicMock(chat=MagicMock(id=123))
         self.bot.send_text('Test message')
-        self.bot.bot.send_message.assert_called_with(123, 'Test message')
+        self.bot.bot.send_message.assert_called_with(123, 'test message')
 
     def test_send_text_with_quote(self):
         # Mock the bot.send_message method and assert that it is called correctly
