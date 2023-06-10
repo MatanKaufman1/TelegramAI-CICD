@@ -6,21 +6,36 @@ pipeline {
         }
     }
     environment {
-        REGISTRY_URL = '700935310038.dkr.ecr.us-west-2.amazonaws.com'
-        IMAGE_NAME = 'matan_test_bot'
-        IMAGE_TAG = '${BUILD_NUMBER}'
+        APP_REGISTRY_URL = '700935310038.dkr.ecr.us-west-2.amazonaws.com'
+        APP_IMAGE_NAME = 'matan_test_bot_app'
+        APP_IMAGE_TAG = '${BUILD_NUMBER}'
+
+        TEST_REGISTRY_URL = '700935310038.dkr.ecr.us-west-2.amazonaws.com'
+        TEST_IMAGE_NAME = 'matan_test_bot'
+        TEST_IMAGE_TAG = '${BUILD_NUMBER}'
     }
 
 
 
     stages {
-        stage('Build') {
+        stage('Build app') {
             steps {
                 sh '''
-                aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $REGISTRY_URL
-                docker build -t $IMAGE_NAME:$BUILD_NUMBER -f qa/Dockerfile .
-                docker tag $IMAGE_NAME:$BUILD_NUMBER $REGISTRY_URL/$IMAGE_NAME:$BUILD_NUMBER
-                docker push $REGISTRY_URL/$IMAGE_NAME:$BUILD_NUMBER
+                aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $APP_REGISTRY_URL
+                docker build -t $APP_IMAGE_NAME:$APP_IMAGE_TAG -f qa_bot/Dockerfile .
+                docker tag $APP_IMAGE_NAME:$BUILD_NUMBER $APP_REGISTRY_URL/$APP_IMAGE_NAME:$BUILD_NUMBER
+                docker push $APP_REGISTRY_URL/$APP_IMAGE_NAME:$BUILD_NUMBER
+                '''
+            }
+        }
+
+         stage('Build test ') {
+            steps {
+                sh '''
+                aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $TEST_REGISTRY_URL
+                docker build -t $ TEST_IMAGE_NAME:$BUILD_NUMBER -f qa/bot/Dockerfile .
+                docker tag $TEST_IMAGE_NAME:$BUILD_NUMBER $TEST_REGISTRY_URL/$TEST_IMAGE_NAME:$BUILD_NUMBER
+                docker push $TEST_REGISTRY_URL/$TEST_IMAGE_NAME:$BUILD_NUMBER
                 '''
             }
         }

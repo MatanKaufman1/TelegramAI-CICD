@@ -25,7 +25,8 @@ pipeline {
         stage('BotDeploy') {
             steps {
                 withCredentials([
-                    file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')
+                    file(credentialsId: 'kube
+                    config', variable: 'KUBECONFIG')
                 ]) {
                     sh '''
                     # apply the configurations to k8s cluster
