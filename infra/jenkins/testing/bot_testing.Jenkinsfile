@@ -31,9 +31,9 @@ pipeline {
             steps {
                 sh """
                 aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin ${TEST_REGISTRY_URL}
-                docker build -t ${TEST_IMAGE_NAME}:${APP_IMAGE_TAG} -f qa/bot/Dockerfile .
-                docker tag ${TEST_IMAGE_NAME}:${APP_IMAGE_TAG} ${TEST_REGISTRY_URL}/${TEST_IMAGE_NAME}:${APP_IMAGE_TAG}
-                docker push ${TEST_REGISTRY_URL}/${TEST_IMAGE_NAME}:${APP_IMAGE_TAG}
+                docker build -t ${TEST_IMAGE_NAME}:${TEST_IMAGE_TAG} -f qa/bot/Dockerfile .
+                docker tag ${TEST_IMAGE_NAME}:${TEST_IMAGE_TAG} ${TEST_REGISTRY_URL}/${TEST_IMAGE_NAME}:${TEST_IMAGE_TAG}
+                docker push ${TEST_REGISTRY_URL}/${TEST_IMAGE_NAME}:${TEST_IMAGE_TAG}
                 """
             }
         }
