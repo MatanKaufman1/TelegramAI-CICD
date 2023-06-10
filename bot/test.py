@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock, patch
-from app import Bot, QuoteBot, YoutubeBot, get_telegram_token_secret
+from bot.app import Bot, QuoteBot, YoutubeBot, get_telegram_token_secret
 
 class TestBot(unittest.TestCase):
 
